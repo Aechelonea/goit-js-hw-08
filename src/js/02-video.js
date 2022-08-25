@@ -17,17 +17,18 @@ const save = (key, value) => {
 const load = key => {
   try {
     const serializedState = localStorage.getItem(key);
+    console.log(JSON.parse(serializedState));
     return serializedState === null ? undefined : JSON.parse(serializedState);
   } catch (error) {
     console.error('Get state error: ', error.message);
   }
 };
 
-player.setCurrentTime(load('videoplayer-current-time').seconds);
+player.setCurrentTime(load('videoplayer-current-time'));
 
 player.on(
   'timeupdate',
   throttle(currentTime => {
-    save('videoplayer-current-time', currentTime);
+    save('videoplayer-current-time', currentTime.seconds);
   }, 1000)
 );
