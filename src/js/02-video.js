@@ -23,7 +23,9 @@ const load = key => {
   }
 };
 
-player.setCurrentTime(load('videoplayer-current-time'));
+if (load('videoplayer-current-time') != undefined) {
+  player.setCurrentTime();
+}
 
 player.on(
   'timeupdate',
