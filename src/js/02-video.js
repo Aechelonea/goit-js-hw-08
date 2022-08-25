@@ -24,7 +24,7 @@ const load = key => {
 };
 
 if (load('videoplayer-current-time') != undefined) {
-  player.setCurrentTime();
+  player.setCurrentTime(load('videoplayer-current-time'));
 }
 
 player.on(
